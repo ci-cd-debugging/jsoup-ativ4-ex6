@@ -100,4 +100,16 @@ public class AttributeParseTest {
         doc = Jsoup.parse(html, "", Parser.xmlParser());
         assertEquals("<img onerror=\"doMyJob\" />", doc.html());
     }
+
+    @Test public void attributeGetValue() {
+        Document doc = Jsoup.parse("<div hidden>");
+        Attributes attributes = doc.body().child(0).attributes();
+        
+        assertEquals("", attributes.get("hidden"));
+
+        Attribute first = attributes.iterator().next();
+
+        assertEquals("hidden", first.getKey());
+        assertEquals("", first.getValue());
+    }
 }
