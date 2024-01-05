@@ -257,7 +257,7 @@ public class Attributes implements Iterable<Attribute>, Cloneable {
 
             @Override
             public Attribute next() {
-                final Attribute attr = new Attribute(keys[i], vals[i], Attributes.this);
+                final Attribute attr = new Attribute(keys[i], checkNotNull(vals[i]), Attributes.this);
                 i++;
                 return attr;
             }
